@@ -1,0 +1,526 @@
+@charset "utf-8";
+.blind {position:absolute; clip:rect(0 0 0 0); width:1px; height:1px; margin-left:-1px; overflow:hidden}
+
+#map_layout{ position:relative; width:100%; height:100%; padding:0; margin:0; display:inline-block; box-sizing:border-box;}
+#map_layout .my_empty {position:absolute; top:50%; left:50%; transform:translateX(-50%); background-color:rgba(74,75,88,0.8); border-radius:3px; width:60%; padding:15px; text-align:center; color:#fff; font-size:12px; display:none}
+#map_layout .my_empty.on{ display:block;}
+
+
+
+.office_map {position:relative; height:200px; border-top:1px solid #d8dde0;}
+.office_map button {position:absolute; top:0; right:0; width:30px; height:30px; background-color:rgba(0,0,0,0.5);z-index: 2}
+
+.no_data_srch {margin:25px 15px 0}
+.no_data_srch p {padding-bottom:8px; font-size:14px; line-height:22px; color:#333; border-bottom:1px solid #c6cbce}
+.no_data_srch ul {margin-top:10px; color:#666}
+.no_data_srch ul li {margin-top:10px; font-size:12px}
+.no_data_srch ul li:before {content:''; display:inline-block; width:2px; height:2px; background-color:#666; vertical-align:middle; margin:-1px 5px 0 2px}
+
+.gis {position:absolute;top:10px;left:10px;width: 36px;text-align: right;}
+.gis>button.reset {background-position: 0 -283px;width:36px;height:36px;margin: 7px 0 7px 0;}
+.gis>button.plus {background-position: 0 0;margin-left: 3px}
+.gis>button.minus {background-position: 0 -30px;margin-left: 3px}
+.gis div {position:relative;}
+.gis button {display:block;width: 30px;height: 30px;background-image:url('https://image.r114.co.kr/W1/images/common/ico_gis.png');/* background-size:65px auto; */background-repeat:no-repeat;}
+.gis .btn_map1 {background-position: 0 -99px;width: 36px;height: 36px;margin-top:0px;}
+.gis .btn_map2 {background-position: 0 -135px;width: 36px;height: 36px;}
+.gis .btn_map3 {background-position: 0 -171px;width: 36px;height: 36px;}
+.gis .btn_map4 {background-position: 0 -207px;width: 36px;height: 36px;}
+.gis .btn_map5 {background-position: 0 -243px;width: 36px;height: 36px;}
+.gis .btn_map1.on {background-position:-45px -99px}
+.gis .btn_map2.on {background-position:-45px -135px}
+.gis .btn_map3.on {background-position:-45px -171px}
+.gis .btn_map4.on {background-position:-45px -207px}
+.gis .btn_map5.on {background-position:-45px -243px}
+
+.gis div button.on + ul {display:block}
+.gis div ul:before {content:''; position:absolute; top:13px; left:-5px; display:block; width:5px; height:8px; background:url('https://image.r114.co.kr/M1/images/sub/ico_gis.png') -60px -151px no-repeat; background-size:65px auto; transform: rotateY(360deg);}
+.gis div ul {display:none;position:absolute;top:0;left: 46px;background-color:#fff;border-radius:3px;box-shadow:0 1px 2px rgba(0,0,0,0.4);}
+.gis div ul li {border-top:1px solid #dbdbdb}
+.gis div ul li:first-child{border-top: 0}
+.gis div ul li a {display:block; padding:12px 5px 10px; min-width:80px; text-align:center; font-size:12px}
+.gis div ul li:first-child a {border-radius:3px 3px 0 0}
+.gis div ul li:last-child a {border-radius:0 0 3px 3px}
+.gis div ul li.on a {background-color:#5c6bc0; color:#fff}
+
+.gis.pst_r {left:inherit; right:10px;}
+.gis.pst_b {left:685px; top:274px;}
+
+.filter_wrap .filter {position:relative; height:38px; padding-right:100px; border-bottom:1px solid #939297}
+.filter_wrap .filter button {font-size:11px; color:#333; letter-spacing:-0.1em}
+.filter_wrap .filter button.on {color:#4d5db5}
+.filter_wrap .filter [class*='sort'] {position:relative; height:38px; border-right:1px solid #c7cbce}
+.filter_wrap .filter [class*='sort'] .ico_comm {float:right; margin:-5px 10px 0; width:9px; height:5px; background-position:0 -1227px}
+.filter_wrap .filter [class*='sort'] .on .ico_comm {background-position:-22px -1227px}
+.filter_wrap .filter [class*='sort'] .inp_txt {position:absolute; top:0; left:0; height:100%; padding:0 7px; border:0; letter-spacing:-0.1em; z-index:0}
+.filter_wrap .filter .sort1 {padding-right:60px}
+.filter_wrap .filter .sort1 .ft1 {position:relative; padding:0 0 0 10px; width:100%; height:38px; z-index:1}
+.filter_wrap .filter .sort1 .ft2 {position:absolute; top:9px; right:10px; width:50px; height:20px; font-size:9px; line-height:17px; border:1px solid #d8dde0; border-radius:2px; z-index:1}
+.filter_wrap .filter .sort2 .ft2.on {border-color:#5c6bc0}
+
+.filter_wrap .filter .sort2 {width:60px; box-sizing:border-box;}
+.filter_wrap .filter .sort2 {position:absolute; top:0; right:40px; }
+.filter_wrap .filter .sort2 .ft3 {position:relative; padding:3px 0 0 10px; width:100%; height:38px; line-height:29px; z-index:1}
+.filter_wrap .filter .ft4 {position:absolute; top:0; right:0; width:40px; height:38px}
+.filter_wrap .filter .ft4 .ico_comm{width:16px; height:16px; background-position:0 -1248px}
+
+.filter_wrap .list_filter, .filter_wrap .list_filter .tab_type2 {display:none}
+.filter_wrap .list_filter > div {padding:15px; background-color:#fff}
+.list_filter .tab_type2 li:nth-of-type(9) input[type="radio"],
+.list_filter .tab_type2 li:nth-of-type(9) input[type="checkbox"]{border-radius:0 0 0 3px;}
+.list_filter .tab_type2 li:nth-of-type(12) input[type="radio"],
+.list_filter .tab_type2 li:nth-of-type(12) input[type="checkbox"]{border-radius:0 0 3px 0;}
+.list_filter .tab_type2:nth-child(2) li:nth-of-type(7) input[type="radio"],
+.list_filter .tab_type2:nth-child(2) li:nth-of-type(7) input[type="checkbox"]{border-radius:0;}
+.list_filter .tab_type2:nth-child(2) li:nth-of-type(7):after {content:'';display:block;position:absolute;top:0;left:100%;z-index:1;width:100%;height:44px;border:solid #929297;border-width:1px 1px 1px 0;border-radius:0 0 3px 0;background-color:#fff;box-sizing:border-box}
+.list_filter .tab_type2 li input {border-radius:0 !important}
+body.filter_open {height:100%; overflow:hidden}
+body.filter_open .list_filter {display:block}
+body.filter_open .list_filter .open {display:-webkit-flex; display:flex}
+body.filter_open .list_filter {position:fixed; top:91px; left:0; right:0; bottom:0; overflow-y:scroll; background-color:rgba(0,0,0,0.5)}
+
+
+
+.marker_info { display:none; position:fixed; bottom:0; width:100%; background-color:#fff; z-index:100}
+.marker_info.open {display:block}
+.marker_info > a {position:absolute; top:16px; right:16px; font-size:0}
+.marker_info .marker_top {height:46px; padding:0px 15px; line-height:46px; color:#fff; background-color:#5c6bc0; letter-spacing:-0.05em; box-sizing:border-box;}
+.marker_info .marker_top h2 {display:inline-block; font-size:16px; font-weight:normal}
+
+.marker_info .marker_cont {position:relative; padding:18px 15px 65px; background-color:#fff; box-sizing:border-box;}
+.marker_info .marker_cont .btn_wrap {position:absolute; bottom:0; width:100%; margin:0 -15px; font-size:0; border-top:1px solid #d8dde0}
+.marker_info .marker_cont .btn_wrap a {display:inline-block; width:50%; height:46px; padding-top:11px; color:#5c6bc0; font-size:15px; box-sizing:border-box;}
+.marker_info .marker_cont .btn_wrap a:nth-of-type(2) {border-left:1px solid #d8dde0;}
+.marker_info .marker_cont .btn_wrap a .ico_comm {width:8px; height:13px; background-position:0 -1484px; margin:-3px 0 0 8px}
+.marker_info .marker_cont .detail {margin:-18px -15px; background-color:#e6ebee}
+.marker_info .marker_cont .detail div {max-height:170px; font-size:0; overflow-y:scroll; padding:2px 0 5px 1px}
+.marker_info .marker_cont .detail div a {display:inline-block; width:calc(25% - 5px); height:65px; margin:4px 0 0 4px; padding:3px 0 5px; text-align:center; background-color:#fff; color:#333; font-size:11px}
+.marker_info .marker_cont .detail div a em {display:block; margin-top:13px; text-align:center; font-size:20px; color:#5c6bc0}
+.marker_info .marker_cont .detail div a em span {line-height:24px; margin-left:2px; font-size:12px;vertical-align: bottom}
+
+.marker_info .marker_cont .list_type {margin:-15px}
+.marker_info .marker_cont .list_type li .thumb {width:94px; height:94px}
+.marker_info .marker_cont .info {font-size:0; margin-top:5px}
+.marker_info .marker_cont .info dt {display:inline-block; width:30px; font-size:13px; height:18px; line-height:18px}
+.marker_info .marker_cont .info dd {display:inline-block; width:calc(100% - 30px); font-size:13px; color:#666; height:18px; line-height:18px}
+.marker_info .marker_cont .report_link {display:block; margin-top:7px; font-size:13px; color:#5c6bc0}
+.marker_info .marker_cont .report_link .ico_comm {width:7px; height:13px; font-size:0; background-position:-23px -1323px; margin:-3px 0 0 6px}
+.marker_info .marker_cont .info_school .info dt {width:55px}
+.marker_info .marker_cont .info_school .info dd {width:calc(100% - 55px)}
+.marker_info .marker_cont .info_school + .btn_wrap a {width:100%}
+
+.no_data_m {text-align:center; padding:10px 0; background-color:#fff}
+.no_data_m p {font-size:16px; color:#000}
+.no_data_m p span {display:block; margin-top:5px; font-size:13px; color:#999}
+.no_data_m .btn_type5 {width:85px; height:32px; margin-top:15px; line-height:30px}
+.box_type1 .no_data_m {padding-top:50px;}
+
+.msrch_wrap.open {display:block}
+.msrch_wrap .search_result {display:none}
+.msrch_wrap {display:none;width:100%;background-color:#fff;z-index:10;}
+.msrch_wrap .search {position:relative; padding-right:90px; height:50px; border-bottom:2px solid #5c6bc0}
+.msrch_wrap .search .inp_txt {font-size:16px; margin-top:5px; border:0; padding-right:30px; letter-spacing:-0.14px}
+.msrch_wrap .search button {position:absolute}
+.msrch_wrap .search .btn_cancel {top:17px; right:95px}
+.msrch_wrap .search .btn_cancel .ico_comm {width:14px; height:14px; background-position:0 -235px}
+.msrch_wrap .search .btn_search {top:17px; right:68px}
+.msrch_wrap .search .btn_search .ico_comm {width:18px; height:18px; background-position:0 -1276px;}
+.msrch_wrap .search .btn_type3 {top:10px; right:16px; width:40px; margin:0; color:#fff; background-color:#5c6bc0; border:0}
+
+.srch_t3 {padding:0 15px}
+.srch_t3 > span {display:block; height:27px; padding-top:13px; font-size:11px; color:#666; border-bottom:1px solid #d8dde0}
+.srch_t3 > span .ico_comm.clock {width:13px; height:13px; background-position:0 -1300px; margin-right:3px}
+.srch_t3 ul li {border-bottom:1px solid #d8dde0}
+.srch_t3 ul li:last-child {border-bottom:0}
+.srch_t3 ul li a {display:block; height:38px; padding-top:10px; font-size:14px; letter-spacing:-0.08em; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+
+.srch_t1 .region_pick,
+.srch_t2 .region_pick {text-align:center; border-top:0; border-bottom-color:#c6cbce; background-color:#f2f3f5}
+.srch_t1 .region_pick + div,
+.srch_t2 .region_pick + div {max-height:300px; overflow-y:auto}
+.juso_search_wrap .srch_t1 .region_pick + div,
+.juso_search_wrap .srch_t2 .region_pick + div{max-height:164px}
+/* 181221 지역전체추가*/
+.area_all_wrap {padding:0px 12px 10px; border-top:0px solid #d8dde0; border-bottom:1px solid #d8dde0; background-color:#f2f3f5;}
+.area_all_wrap a {height:30px; line-height:30px; display:block;}
+.area_all_wrap a span {width:11px; height:15px; display:inline-block; margin:0 4px -2px 0; background:url(https://image.r114.co.kr/W1/images/common/ico_small.png) 0 -2308px;}
+/* //181221 지역전체추가*/
+.srch_t1 ul,
+.srch_t2 ul {position:relative;/* margin-top:-1px; */font-size:0;overflow-x:hidden;display: flex;flex-wrap: wrap;}
+.srch_t1 ul:after,
+.srch_t2 ul:after {content:''; position:absolute; top:0; left:33.333%; display:block; width:1px; height:100%; background-color:#d8dde0}
+.srch_t1 ul:before,
+.srch_t2 ul:before {content:'';position:absolute;top:0;right:33.333%;display:block;width:1px;height:100%;background-color:#d8dde0;z-index: 1;}
+.srch_t1 ul li,
+.srch_t2 ul li {position:relative;display:inline-block;width:33.333%;box-sizing:border-box;z-index: 5;/* border:1px solid transparent; *//* padding-top: 1px; */}
+.srch_t2 ul li a span.subway_comm {margin-right:0;}
+
+.srch_t1.singleline ul:before{display:none}
+.srch_t1.singleline ul:after{display:none}
+.srch_t1.singleline ul li:nth-of-type(3n+1):before{display:none}
+.srch_t1.singleline ul li{display: block;width: 100%;border-bottom: 1px solid #d8dde0}
+.srch_t1.singleline ul li:last-child{border-bottom: 0}
+.srch_t1.singleline ul li a{text-align:left;padding: 10px}
+
+.srch_t1 ul li:nth-of-type(3n+1):before,
+.srch_t2 ul li:nth-of-type(3n+1):before {content:'';position:absolute;top:0px;left:0px;display:block;width:1000%;border-top:1px solid #d8dde0;z-index: 1;}
+.srch_t1 ul li:first-child:before,
+.srch_t2 ul li:first-child:before{border-top: 0}
+.srch_t1 ul li a,
+.srch_t2 ul li a {position:relative;display:block;padding:10px 2px;font-size:13px;color:#000;text-align:center;letter-spacing:-0.1em;z-index:2;border:1px solid transparent}
+.srch_t1 ul li a:hover,
+.srch_t2 ul li a:hover {border:1px solid #4c5aa8;color:#4c5aa8}
+
+.srch_t2 .region_pick a {color:#666; margin-left:10px}
+.srch_t2 .region_pick a:first-child {margin-left:0}
+.srch_t2 .region_pick a.on {color:#5c6bc0}
+.srch_t2 ul li a {padding:10px 10px 10px 5px;position: relative;text-align:left;}
+.srch_t2.next .region_pick {color:#666}
+.srch_t2.next .region_pick a {margin-left:0}
+.srch_t2.next ul li a {padding:10px 2px;text-align:center;display: flex;justify-content: center;align-items: center;height: 100%;box-sizing: border-box;}
+.boxTab_wrap .btn_wrap{margin: 0;padding: 14px;box-sizing: border-box;background: #f4f5f9}
+
+
+/* MY맵 */
+.mym_list {display:none; position:fixed; bottom:0; z-index:100; width:100%}
+.mym_list.open {display:block;}
+.mym_list .mym_top {height:50px; padding:5px 10px; color:#fff; background-color:#5c6bc0; box-sizing:border-box;}
+.mym_list .mym_top a {display:inline-block; padding:5px 2px; margin:0 3px; color:#aeb5e0; font-size:16px; letter-spacing:-0.07em}
+.mym_list .mym_top a.selected {color:#fff; border-bottom:2px solid #fff}
+.mym_list .btn_delete {position:absolute; top:15px; right:15px}
+.mym_list .btn_delete .ico_comm {width:15px; height:15px; background-position:-15px -1053px}
+.mym_list .mym_cont {background-color:#fff}
+.mym_list .mym_cont .list_my.type3 {max-height:200px; overflow-y:auto;}
+.mym_list .mym_cont .list_my.type3 li.on {background-color:#f2f3f5}
+.mym_list .mym_cont .list_my.type3 li .item_tit .date2 {margin-left:3px; font-size:11px; color:#999}
+
+.mym_choice {display:none; position:fixed; bottom:0; z-index:100; width:100%}
+.mym_choice.open {display:block;}
+.mym_choice .list_my.type3 li.on {background-color:#f2f3f5}
+.mym_choice .list_my.type3 li .item_tit .date2 {margin-left:3px; font-size:11px; color:#999}
+.mym_choice .btn_wrap {font-size:0}
+.mym_choice .btn_wrap a {display:inline-block; width:50%; height:50px; line-height:48px; font-size:14px; background-color:#fff; color:#5c6bc0; box-sizing:border-box;}
+.mym_choice .btn_wrap a:first-child {border-right:1px solid #d8dde0}
+.mym_choice .btn_wrap a .ico_comm {width:7px; height:15px; background-position:0 -1470px}
+
+.price_info.open {display:block;}
+.price_info.cp {display:block; position:static; padding-top:0 !important}
+.price_info.cp .smr_info {margin-top:-10px}
+.price_info {display:none; position:absolute;left:0; bottom:0; width:100%; padding:0 10px; box-sizing:border-box; background-color:rgba(255,255,255,0.95); background-color:rgb(255,255,255)\9; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";}
+.price_info .smr_info{margin-top:12px; line-height:14px}
+.price_info .smr_info p {display:inline-block; margin-right:8px; font-size:14px; font-weight:500; color:#333}
+.price_info .fc_gray1{font-size:12px;color: #999}
+.price_info ul {margin-top:9px; height:25px; font-size:0}
+.price_info ul li {position:relative; display:inline-block; width:20%; height:7px}
+.price_info ul li:first-child {border-radius:4px 0 0 4px}
+.price_info ul li:last-child {border-radius:0 4px 4px 0}
+.price_info ul li:nth-of-type(1) {background-color:#76d99b}
+.price_info ul li:nth-of-type(2) {background-color:#c9eb41}
+.price_info ul li:nth-of-type(3) {background-color:#ffd852}
+.price_info ul li:nth-of-type(4) {background-color:#ffa752}
+.price_info ul li:nth-of-type(5) {background-color:#ff5252}
+.price_info ul li span {position:absolute; top:10px; left:-10px; color:#999; font-size:12px}
+.price_info ul li:first-child span {left:0}
+.price_info .txt_info{display: inline-block;margin: -25px 0 0 15px;padding:10px 0;font-size:12px;line-height:18px;color:#666;width: 350px;/* text-align: left; */text-indent: 0;vertical-align: middle}
+.price_info .daumMapWebLegend{display: inline-block;vertical-align: middle}
+
+.price_ly {display:none; position:absolute; top:10px; left:50%; transform:translateX(-50%); padding:7px 15px 9px; color:#000; text-align:center; border-radius:3px; background-color:rgba(255,255,255,0.9); background-color:rgb(255,255,255)\9; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";}
+.price_ly.open {display:block}
+.price_ly dt {font-size:12px;}
+.price_ly dd {font-size:17px; margin-top:4px;line-height: 120%}
+.price_ly dd span {font-size:12px; color:#333; line-height:120%; vertical-align:bottom; display:inline-block;}
+
+.fa_wrap {display:none; position:absolute; top:0; left:0; width:100%; height:100%; background-color:#fff; z-index:102}
+.fa_wrap.open {display:block;}
+.fa_top { width:100%; min-width:320px; background-color:#fff; padding:0px; margin:0px; display:inline-block; position:fixed; top:0px; left:0px; z-index:11;}
+.fa_top .top_wrap{ width:100%; height:52px; padding:12px 12px 12px 15px; margin:0px; box-sizing:border-box; border-bottom:1px solid #dbdbdb; position:relative;}
+.fa_top .top_wrap .title{position:absolute; left:50%; z-index:999; width:160px; height:28px; background:none; font-weight:normal; text-align:center; margin-left:-80px; font-size:20px; color:#000; line-height:28px;}
+.fa_top .top_wrap .title h1{ display:inline-block;}
+.fa_top .top_wrap .title h1 a{ width:160px; height:28px; padding:0; margin:0; float:left; font-weight:normal; font-size:20px; color:#000; text-indent:0px; line-height:28px; display:inline-block; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.fa_top .top_wrap .utile_wrap{ height:28px; padding:0px; margin:0px; display:inline-block; float:right;}
+.fa_top .top_wrap .utile_wrap li.close{position:absolute; right:15px; width:28px; height:28px; background-position:center center; background-repeat:no-repeat; background-size:13px 13px; padding:0px; margin:0; display:inline-block; float:left;background-image:url(https://image.r114.co.kr/M1/images/inc/lp_btn_close.gif);}
+.fa_top .top_wrap .utile_wrap li a{ width:28px; height:28px; line-height:28px; text-indent:-99999px; padding:0px; margin:0px; display:block; float:left;}
+
+.filter_add {position:relative;}
+.filter_add li > a {display:block; position:relative; padding:12px 42px 5px 15px; border-bottom:1px solid #c6cbce;}
+.filter_add li > a .inp {position:absolute; top:50%; right:45px; margin-top:-10px; font-size:14px; color:#5c6bc0; text-align:right}
+.filter_add li > a .arrow {position:absolute; top:50%; right:16px; width:13px; height:7px; margin-top:-5px; background-position:0 -1348px;}
+.filter_add .cont {display:none; position:relative; padding:20px 15px; border-bottom:1px solid #d8dde0; background-color:#f5f7f9;}
+.filter_add .cont .direct {margin-top:20px; line-height:30px;}
+.filter_add .cont .direct .inp_txt {text-align:right; width:30%; height:32px; line-height:30px; border-color:#929297}
+.filter_add .cont .direct span {color:#999; font-size:16px margin:0 4px}
+.filter_add .cont .direct .btn_type13 {display:inline-block; width:55px; height:32px; margin-left:10px; line-height:30px}
+.filter_add .tab_type2 span input:checked {border-color:#5c6bc0; background-color:#5c6bc0}
+
+.filter_add .on .cont {display:block;}
+.filter_add .on > a {border-bottom:0}
+.filter_add .on .arrow{-webkit-transform:rotate(180deg); transform:rotate(180deg)}
+
+
+.p_mem_list .slide_wrap > .slideBox > li .name{padding: 0 10px 0 5px}
+.p_mem_list .slide_wrap > .slideBox > li a{overflow: hidden}
+.p_mem_list .slide_wrap > .slideBox > li .tel{color: #445cd4;font-size: 12px;margin: 4px 0 0 4px}
+.p_mem_list .slide_wrap > .slideBox > li .tel:before{display: inline-block;content:" ";overflow: hidden;background: url(https://image.r114.co.kr/M1/images/sub/ico_comm2.png) no-repeat;background-size: 50px auto;font-size: 0;line-height: 0;vertical-align: middle;width: 20px;height: 21px;background-position: 0 -245px;margin-right: 5px}
+
+
+
+/*탭*/
+.slideTab_wrap{ width:100%; padding:4px 0px 0px 0px; margin:0px; display:inline-block;}
+.boxTab_wrap{ width:100%; background-color:#fff; padding:0px; margin:0px; display:inline-block; position:relative;}
+.slideTab_wrap .tabScroll{ width:100%; padding:0px; margin:0px; overflow-x:auto; overflow-y:hidden; position:relative;}
+.slideTab_wrap .tabScroll .tabBox{ width:100%; padding:0px; margin:0px; display:inline-block;}
+.boxTab_wrap .tabBox{ width:100%; padding:0px; margin:0px; display:block;}
+.slideTab_wrap .tabScroll .tabBox .tabBtn,
+.boxTab_wrap .tabBox .tabBtn{ height:42px; padding:0px; margin:0px 0px 0px 0px; display:inline-block; position:absolute; top:0px; z-index:1; white-space:nowrap;}
+.slideTab_wrap .tabScroll .tabBox .tabBtn a{ font-size:13px; color:#000; line-height:42px; padding:0px 8px 0px 14px; margin:0px 10px; display:inline-block;}
+.boxTab_wrap .tabBox .tabBtn a{ font-size:13px; text-align:center; color:#000; line-height:42px; padding:0px 8px; margin:0px 10px; display:block; white-space:nowrap;}
+.slideTab_wrap .tabScroll .tabBox .tabCon,
+.boxTab_wrap .tabBox .tabCon{ width:100%; padding:0px; margin:42px 0px 0px 0px; display:inline-block; border-top:1px solid #d8dde0; position:absolute; top:-99999px; left:0px; z-index:1;}
+.slideTab_wrap .tabScroll .tabBox.on .tabBtn a,
+.boxTab_wrap .tabBox.on .tabBtn a{ line-height:38px; padding-top:2px; border-bottom:2px solid #000}
+.slideTab_wrap .tabScroll .tabBox.on .tabCon{ display:inline-block; top:0px; z-index:2;}
+.boxTab_wrap .tabBox.on .tabCon{ display:inline-block; position:relative; top:0px; z-index:2;}
+.slideTab_wrap.type2 .tabBox .tabBtn:before,
+.boxTab_wrap.type2 .tabBox .tabBtn:before {content:''; position:absolute; display:inline-block; width:1px; height:13px; margin:15px 5px 0; vertical-align:middle; background-color:#bbb}
+.slideTab_wrap.type2 .tabBox:first-child .tabBtn:before,
+.boxTab_wrap.type2 .tabBox:first-child .tabBtn:before {display:none}
+.slideTab_wrap.type2 .tabScroll .tabBox .tabBtn a {color:#666; margin:0; font-size:11px; letter-spacing:-0.1em}
+.boxTab_wrap.type2 .tabBox .tabBtn a {color:#666; margin:0; font-size:11px; letter-spacing:-0.1em}
+
+/***********************************************************************************/
+/************************************ ASC START ************************************/
+
+.markerLv1,
+.markerLv2,
+.markerLv3{ background-color:#3a4aaf; padding:0pxx; margin:0px; display:inline-block; box-sizing:border-box; border-radius:26px; opacity:0.85; position:relative; cursor:pointer;}
+.markerLv1,
+.markerLv2{ width:70px; height:70px;}
+.markerLv3{ width:46px; height:46px; border-radius:16px;}
+.markerLv4{ width:30px; height:39px; background-image:url(https://image.r114.co.kr/W1/images/sub/markerLv4_bg.png); background-position:center center; background-repeat:no-repeat; background-size:100%; padding:0px; margin:0px; display:inline-block; position:relative;}/*170205지도마커수정*/
+.markerLv1 dl,
+.markerLv2 dl,
+.markerLv3 dl{ width:70px; height:70px; text-align:center; padding:0px; margin:0px; display:table-cell; vertical-align:middle;}
+.markerLv3 dl{ width:46px; height:46px;}
+.markerLv3 .area{ width:46px; height:46px; font-size:11px; text-align:center; padding:0px; margin:0px; display:table-cell; vertical-align:middle; color:#fff; line-height:13px !important; word-break:break-all;}
+.markerLv1 dt,
+.markerLv2 dt,
+.markerLv3 dt{ font-size:13px; font-weight:500;}
+.markerLv3 dt{ line-height:13px !important; word-break:break-all;}
+.markerLv1 dt,
+.markerLv1 dd,
+.markerLv2 dt,
+.markerLv2 dd,
+.markerLv3 dt,
+.markerLv3 dd{ width:100%; color:#fff; text-align:center; line-height:17px; padding:0px; margin:0px;}
+.markerLv1 dd.percent,
+.markerLv2 dd.percent{ font-size:13px; font-weight:400;}
+.markerLv1 dd.percent .up,
+.markerLv2 dd.percent .up,
+.markerLv1 dd.percent .down,
+.markerLv2 dd.percent .down,
+.markerLv1 dd.percent .hold,
+.markerLv2 dd.percent .hold{ width:14px; text-indent:-99999px; padding:0px; margin:0px; display:inline-block; position:relative;}
+.markerLv1 dd.percent .up:before,
+.markerLv2 dd.percent .up:before{ content:""; margin-top:-2px; display:inline-block; border-style:solid; border-color:transparent transparent #fff; border-width:0px 4px 5px 4px; position:absolute; left:0px; top:50%;}
+.markerLv1 dd.percent .down:before,
+.markerLv2 dd.percent .down:before{ content:""; margin-top:-2px; display:inline-block; border-style:solid; border-color:#fff transparent transparent; border-width:5px 4px 0px 4px; position:absolute; left:0px; top:50%;}
+.markerLv1 dd.percent .hold:before,
+.markerLv2 dd.percent .hold:before{ width:6px; height:2px; background-color:#fff; content:""; padding:0px; margin-top:0px; display:inline-block; position:absolute; left:0px; top:8px;}
+.markerLv1 dd.num,
+.markerLv2 dd.num,
+.markerLv3 dd{ font-size:12px; font-weight:400;}
+
+[class*='markerLv'] > .num{ height:16px; background-color:#fff; font-size:11px; text-align:center; line-height:14px; padding:0px 6px; margin:0px; display:inline-block; box-sizing:border-box; border-width:1px; border-style:solid; border-radius:8px; position:absolute; top:-5px;word-break: normal;}
+[class*='markerLv'].typeA > .num{color:#545ca5; border-color:#5c6bc0}
+[class*='markerLv'].typeB > .num{color:#ff5252; border-color:#ff5252}
+.markerLv1 > .num, .markerLv2 > .num {left:55px}
+.markerLv3 > .num {left:29px}
+.markerLv4 > .num {left:18px}
+
+
+.markerLv1 .selected,
+.markerLv2 .selected,
+.markerLv3 .selected{ font-size:12px; font-weight:500; color:#5c6bc0; line-height:14px; text-align:center; display:none;}
+.markerLv1 .unselected,
+.markerLv2 .unselected,
+.markerLv3 .unselected{ display:block; padding:0px 5px;}
+.markerLv1.on,
+.markerLv2.on,
+.markerLv3.on{ background-color:#fff; border:2px solid #5c6bc0; opacity:1;}
+.markerLv1.on .selected,
+.markerLv2.on .selected,
+.markerLv3.on .selected{ display:block;}
+.markerLv1.on .unselected,
+.markerLv2.on .unselected,
+.markerLv3.on .unselected{ display:none;}
+
+.markerLv1.on .selected,
+.markerLv2.on .selected{ width:66px; height:66px; text-align:center; padding:0px; margin:0px; display:table-cell; vertical-align:middle;}
+.markerLv3.on .selected{ width:42px; height:42px; font-size:11px; text-align:center; padding:0px; margin:0px; display:table-cell; vertical-align:middle;}
+.markerLv4.on{ background-image:url(https://image.r114.co.kr/W1/images/sub/markerLv4_bg_on.png);}/*170205지도마커수정*/
+
+.markerLv1.typeB,
+.markerLv2.typeB,
+.markerLv3.typeB{ background-color:#ff5252;}
+.markerLv4.typeB{ background-image:url(https://image.r114.co.kr/W1/images/sub/markerLv4_bg2.png);}/*170205지도마커수정*/
+.markerLv4.typeC{ background-image:url(https://image.r114.co.kr/W1/images/sub/markerLv4_bg3.png);}/*170205지도마커수정*/
+.markerLv4.typeD{ background-image:url(https://image.r114.co.kr/W1/images/sub/markerLv4_bg4.png);}/*170205지도마커수정*/
+.markerLv1.typeB .selected,
+.markerLv2.typeB .selected,
+.markerLv3.typeB .selected{ color:#ff5252;}
+.markerLv1.on.typeB,
+.markerLv2.on.typeB,
+.markerLv3.on.typeB{ background-color:#fff; border:2px solid #ff5252;}
+.markerLv4.on.typeB{ background-image:url(https://image.r114.co.kr/W1/images/sub/markerLv4_bg2_on.png);}/*170205지도마커수정*/
+.markerLv4.on.typeC{ background-image:url(https://image.r114.co.kr/W1/images/sub/markerLv4_bg3_on.png);}/*170205지도마커수정*/
+
+.markerLv4.type_bus{ background-image:url(https://image.r114.co.kr/W1/images/common/ico_maker.png);background-size:initial;background-position:0 0;width: 29px;height: 38px;margin: 0}
+.markerLv4.on.type_bus{ background-image:url(https://image.r114.co.kr/W1/images/common/ico_maker.png);background-size:initial;background-position:-33px 0;width: 29px;height: 38px;margin: 0}
+.markerLv4.type_cctv{ background-image:url(https://image.r114.co.kr/W1/images/common/ico_maker.png);background-size:initial;background-position:-66px 0;width: 29px;height: 38px;margin: 0}
+.markerLv4.on.type_cctv{ background-image:url(https://image.r114.co.kr/W1/images/common/ico_maker.png);background-size:initial;background-position:-99px 0;width: 29px;height: 38px;margin: 0}
+
+
+.search_result .list_result{height: 128px;margin: 12px 0 0;overflow-y:auto;z-index: 2;position: relative;background: #fff;}
+.search_result .list_result.iscroll_wrap{overflow:hidden}
+.search_result .list_result li{}
+.search_result .list_result a{display:block;position:relative;height:30px;padding:0 40px 0 20px;font-size:12px;line-height:30px;overflow: hidden;text-overflow: ellipsis;white-space:nowrap}
+.search_result .list_result li:hover a {background: #f3f5f8}
+.search_result .list_result .al_result{display:block;overflow:hidden;width:100%;white-space:nowrap;text-overflow:ellipsis;word-break:break-all;}
+.search_result .list_result .ico_arrow{position:absolute;top:10px;right:20px;width:11px;height:11px;background-position:-17px -200px;}
+.search_result .btn_cancel{display:block;position: relative;width:100%;height:30px;padding-left:16px;border-top:1px solid #d8dde0;font-size:11px;color:#999;background: #fff;z-index: 3;text-align:center;box-sizing:border-box;}
+
+
+.maker_tip{position:absolute;display: inline-block;padding: 0 15px;box-shadow: 0 1px 1px rgba(0,0,0,.3);letter-spacing: 0;min-height: 20px;width: 335px;background: #fff;right: 43px;animation-name: maker_fade;animation-duration: .2s}
+@keyframes maker_fade {
+  0%  {opacity: 0;transform: scale(.8) translateX(50px)}
+  100% {opacity: 1;transform: scale(1) translateX(0)}
+}
+.maker_tip:after{position: absolute;top: 50%;margin-top: -7px;right: -9px;display: inline-block;content:"";width: 10px;height: 15px;background: url('https://image.r114.co.kr/W1/images/common/ico_small.png') no-repeat -6px -2px;}
+.maker_tip.single{width: auto;min-width: 100px;line-height: 34px}
+.maker_tip .title{display: block;padding: 10px 0;font-weight: 400;border-bottom: 1px solid #e5e5e5}
+.maker_tip .title em{color: #5d6bb7;margin-left: 5px}
+.maker_tip .cont{position: relative;padding:0px 0 12px}/* 1807 수정 */
+.maker_tip .cont .thumb_wrap{position: absolute;left: 0;top: 14px;max-height: 95px;overflow: hidden;}
+.maker_tip .info{padding-top:10px;}/* 1807 추가 */
+.maker_tip .thumb_wrap+.info{padding-left: 95px;}
+.maker_tip .cont .juso{font-weight: 400;color: #333}
+.maker_tip .info ul li strong{font-size:13px;font-weight:400;margin-right:9px;color: #333}
+.maker_tip .info ul li strong.bustype{color: #fff}
+.maker_tip .info ul li span{font-size:13px;color:#666}
+.maker_tip .info ul li span em{color: #5d6bb7;font-weight: 500;margin: 0 5px 0 1px;}
+.maker_tip .btn{display: block;text-align: center;padding: 10px;color: #4c5aa8;border-top: 1px solid #e5e5e5}
+.maker_tip .pop_close{position: absolute;right:15px;top:13px;display: inline-block;background: url('https://image.r114.co.kr/W1/images/common/ico_small.png') no-repeat -13px -601px;width: 13px;height: 13px;text-indent: -10000px}
+
+.maker_pointred{display: inline-block;background: url('https://image.r114.co.kr/W1/images/common/maker_point.png') no-repeat;width: 22px;height: 33px;text-indent: -10000px}
+
+/* 1807 실거래가추가 */
+.maker_tip .cdm_price {font-size:13px; line-height:20px; padding:8px 0; border-bottom:1px solid #e5e5e5;}
+.maker_tip .cdm_price:after {content:"" !important; display:block !important; clear:both !important;}
+.maker_tip .cdm_price > span {font-weight:400; margin-right:9px; color:#333;}
+.maker_tip .cdm_price > em {}
+.maker_tip .cdm_price > em .tag_comm2 {font-size:12px; line-height:16px;}
+.maker_tip .cdm_price > em .price_area {font-weight:400;}
+.maker_tip .cdm_price > em .area_size {color:#666; font-size:12px;}
+.maker_tip .cdm_price a {float:right; line-height:18px; font-size:12px; padding:0 5px;}
+
+.maker_tip .cont .cdm_price + .thumb_wrap {top:52px !important;}/* 실거래가가 있을때 단지사진 위치 변경 */
+/*// 1807 실거래가추가 */
+
+/* 로드뷰 추가 */
+.roadview_wrap {position:absolute; background:#fff; top:0; left:0; z-index:110; width:100%; height:388px; box-sizing:border-box; border:1px solid #bdbdbd}/* 180903수정 */
+.roadview_wrap:after {display:block; clear:both; content:"";}
+.roadview_wrap .roadview_left {float:left; width:278px; height:386px; position:relative;}
+.roadview_wrap .roadview_left #mapAreaRoadviewRadar {width:100%; height:100%;}
+.roadview_wrap .roadview_right {float:right; width:700px; height:386px; position:relative; background:#fafafa;}
+.roadview_wrap .roadview_right:before {border-left:1px solid #bdbdbd; content:""; top:0; left:0; bottom:0; position:absolute; z-index:1}
+
+/*.roadview_wrap .roadview_right*/ .flash_setup {position:absolute; width:500px; height:280px; left:50%; top:50%; margin:-140px 0 0 -250px; border:1px solid #ddd; text-align:center; padding:15px 0 0; box-sizing:border-box; background:#fff;} /* 180903수정 */
+/*.roadview_wrap .roadview_right*/ .flash_setup .visual {margin-bottom:20px; font-size:20px; font-weight:500} /* 180903수정 */
+/*.roadview_wrap .roadview_right*/ .flash_setup .visual span{display:inline-block; width:24px; height:24px; background:url(https://image.r114.co.kr/W1/images/common/ico_gis.png) 0 -431px; vertical-align:middle; margin:0 5px 3px 0;} /* 180903수정 */
+/*.roadview_wrap .roadview_right*/ .flash_setup p.main_txt{color:#111; font-size:16px; padding-bottom:10px;} /* 180903수정 */
+/*.roadview_wrap .roadview_right*/ .flash_setup p.sub_txt{font-size:13px; padding-bottom:30px;} /* 180903수정 */
+/*.roadview_wrap .roadview_right*/ .flash_setup a.btn_type12 {margin-bottom:20px;} /* 180903수정 */
+/*.roadview_wrap .roadview_right*/ .flash_setup a.btn_type_txt {text-decoration:underline; color:#5c6bc0;} /* 180903수정 */
+
+.roadview_none {position:absolute; top: 0;left: 279px;right: 0;bottom: 0;background: #fafafa;z-index: 999;}
+.roadview_none span{position:absolute; top:50%; color:#666;text-align:center; width:100%; line-height:16px; margin-top:-16px;}
+.gis>button.roadview {background-position: 0 -329px;width:36px;height:36px; margin-bottom:10px;}
+.gis>button.roadview.on {background-position: -45px -329px;}
+.gis>button.reset_small {background-position: 0 -365px;width:30px;height:30px;margin:-1px 3px 0;}
+.gis>button.close {background-position: 0 -395px; width:18px;height:36px; margin:-0px 0 0 -10px; z-index:1; position:absolute;}
+
+/* 180903 지역개발정보 리스트/상세 로드뷰 추가(사이즈조절) */
+.map_wrap.sale .roadview_wrap {height:317px; border:0;}
+.map_wrap.sale .roadview_wrap .roadview_left {width:260px; height:317px;}
+.map_wrap.sale .roadview_wrap .roadview_right {width:466px; height:317px;}
+.map_wrap.sale .roadview_wrap .roadview_right .flash_setup {width:400px; height:300px; left:50%; top:50%; margin:-150px 0 0 -200px;}
+.sub_map_wrap.view .roadview_wrap {height:300px; border:0;}
+.sub_map_wrap.view .roadview_wrap .roadview_left {width:260px; height:300px;}
+.sub_map_wrap.view .roadview_wrap .roadview_right {width:466px; height:300px;}
+.sub_map_wrap.view .roadview_wrap .roadview_right .flash_setup {width:400px; height:280px; left:50%; top:50%; margin:-150px 0 0 -200px;}
+.sub_map_wrap.view .roadmap_wrap #divRoadMap {width:100%; height:100%;}
+
+.sub_map_wrap.view .roadmap_wrap { position:absolute; top:0; right:0; bottom:0; left:0; background:rgba(0,0,0,0.5); z-index:102;}
+.sub_map_wrap.view .roadmap_wrap > a.btn_roadview_close {width:120px; line-height:32px; display:block; border-radius:50px; position:absolute; left:50%; top:10px; background:rgba(255,255,255,0.9); margin-left:-60px; text-align:center; border:1px solid #999; color:#000; font-weight:400;}
+.sub_map_wrap.view .roadmap_wrap > a.btn_roadview_close:after {content:""; width:9px; height:9px; background:url(https://image.r114.co.kr/W1/images/etc/startup/bg_map_set.png) no-repeat -32px -42px; display:inline-block; margin:0 0 3px 6px; vertical-align:middle;}
+/*// 180903 지역개발정보 리스트/상세 로드뷰 추가(사이즈조절) */
+/* 180903 지역개발정보 리셋버튼 */
+.pst_r button.reset {width:28px; height:28px; border:1px solid #999; margin:10px 0 0 3px; background-position:-1px -366px;}
+/* 180903 지도영역안내 */
+.regional_map_info {position:absolute; background:#fff; border:1px solid #888; border-radius:3px; font-size:12px; top:-5px; left:15px; padding:2px;}
+
+/* 1807 지도크게보기버튼 */
+.but_area_long {top:inherit; left:inherit; top:126px; right:13px; background:none; width:30px;}
+.but_area_long button {background:url(https://image.r114.co.kr/W1/images/common/ico_gis.png) no-repeat 0 -470px;}
+.but_area_long button.close_map {background:url(https://image.r114.co.kr/W1/images/common/ico_gis.png) no-repeat 0 -500px;}
+
+/* 마커 */
+.MapWalker {position:absolute;margin:-26px 0 0 -51px}
+.MapWalker .figure {position:absolute;width:25px;left:38px;top:-2px; height:39px;background:url(https://t1.daumcdn.net/localimg/localimages/07/2012/roadview/roadview_minimap_wk.png) -298px -114px no-repeat}
+.MapWalker .angleBack {width:102px;height:52px;background: url(https://t1.daumcdn.net/localimg/localimages/07/2012/roadview/roadview_minimap_wk.png) -834px -2px no-repeat;}
+.MapWalker.m0 .figure {background-position: -298px -114px;}
+.MapWalker.m1 .figure {background-position: -335px -114px;}
+.MapWalker.m2 .figure {background-position: -372px -114px;}
+.MapWalker.m3 .figure {background-position: -409px -114px;}
+.MapWalker.m4 .figure {background-position: -446px -114px;}
+.MapWalker.m5 .figure {background-position: -483px -114px;}
+.MapWalker.m6 .figure {background-position: -520px -114px;}
+.MapWalker.m7 .figure {background-position: -557px -114px;}
+.MapWalker.m8 .figure {background-position: -2px -114px;}
+.MapWalker.m9 .figure {background-position: -39px -114px;}
+.MapWalker.m10 .figure {background-position: -76px -114px;}
+.MapWalker.m11 .figure {background-position: -113px -114px;}
+.MapWalker.m12 .figure {background-position: -150px -114px;}
+.MapWalker.m13 .figure {background-position: -187px -114px;}
+.MapWalker.m14 .figure {background-position: -224px -114px;}
+.MapWalker.m15 .figure {background-position: -261px -114px;}
+.MapWalker.m0 .angleBack {background-position: -834px -2px;}
+.MapWalker.m1 .angleBack {background-position: -938px -2px;}
+.MapWalker.m2 .angleBack {background-position: -1042px -2px;}
+.MapWalker.m3 .angleBack {background-position: -1146px -2px;}
+.MapWalker.m4 .angleBack {background-position: -1250px -2px;}
+.MapWalker.m5 .angleBack {background-position: -1354px -2px;}
+.MapWalker.m6 .angleBack {background-position: -1458px -2px;}
+.MapWalker.m7 .angleBack {background-position: -1562px -2px;}
+.MapWalker.m8 .angleBack {background-position: -2px -2px;}
+.MapWalker.m9 .angleBack {background-position: -106px -2px;}
+.MapWalker.m10 .angleBack {background-position: -210px -2px;}
+.MapWalker.m11 .angleBack {background-position: -314px -2px;}
+.MapWalker.m12 .angleBack {background-position: -418px -2px;}
+.MapWalker.m13 .angleBack {background-position: -522px -2px;}
+.MapWalker.m14 .angleBack {background-position: -626px -2px;}
+.MapWalker.m15 .angleBack {background-position: -730px -2px;}
+
+/* 매물상세 팝업 */
+.lp_con .roadview_wrap{position:relative; height:500px; border:0;}
+.lp_con .roadview_wrap .roadview_left { width:280px; height:500px;}
+.lp_con .roadview_wrap .roadview_right { height:500px;}
+
+/* gis 거래율 */
+.price_info .txt_info.range_wrap {position:absolute;}
+.price_info .txt_info.range_wrap span.range_title {font-size:14px; font-weight:500; color:#333;}
+.price_info .txt_info.range_wrap span.range_control {display:block; width:350px; height:40px; margin-top:5px; overflow:hidden; position:relative;}
+
+.tooltip.Trate {min-width: 320px; left: 50%; margin-left: -180px;}
+.tooltip.Trate strong {display:block; border-bottom:1px solid #e5e5e5; padding-bottom:8px; margin-bottom:8px; font-size:15px;}
+.tooltip.Trate p {font-weight:400; padding-bottom:5px; font-size:13px;}
